@@ -1,0 +1,18 @@
+# .NET
+backend/**/bin/
+backend/**/obj/
+backend/HealthTracker.API/appsettings.Development.json
+
+# Node
+frontend/node_modules/
+frontend/.env
+frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vs/
+.idea/
+*.user
