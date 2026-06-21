@@ -177,6 +177,12 @@ try
 
     var app = builder.Build();
 
+    // ── Apply EF Core Migrations automatically ──────────────────────────────
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<HealthTracker.Infrastructure.Persistence.AppDbContext>();
+        db.Database.Migrate();
+    }
     // ── Middleware pipeline ───────────────────────────────────────────────────
     app.UseSerilogRequestLogging(opts =>
     {
