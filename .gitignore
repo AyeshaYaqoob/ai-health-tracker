@@ -2,10 +2,14 @@
 backend/**/bin/
 backend/**/obj/
 backend/HealthTracker.API/appsettings.Development.json
+backend/HealthTracker.API/appsettings.Production.json
+backend/HealthTracker.API/appsettings.Secrets.json
+backend/HealthTracker.API/logs/
 
 # Node
 frontend/node_modules/
 frontend/.env
+frontend/.env.local
 frontend/dist/
 
 # OS

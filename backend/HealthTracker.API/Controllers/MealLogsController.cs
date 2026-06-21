@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Asp.Versioning;
 using HealthTracker.Application.Features.MealLogs.Commands;
 using HealthTracker.Application.Features.MealLogs.Queries;
 using MediatR;
@@ -8,8 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace HealthTracker.API.Controllers;
 
 [ApiController]
-[Route("api/meal-logs")]
+[Route("api/v{version:apiVersion}/meal-logs")]
 [Authorize]
+[ApiVersion("1.0")]
 public class MealLogsController : ControllerBase
 {
     private readonly IMediator _mediator;

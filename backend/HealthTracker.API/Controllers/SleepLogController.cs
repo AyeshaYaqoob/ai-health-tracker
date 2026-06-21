@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Asp.Versioning;
 using HealthTracker.Application.Features.SleepLogs.Commands;
 using HealthTracker.Application.Features.SleepLogs.Queries;
 using MediatR;
@@ -8,8 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace HealthTracker.API.Controllers;
 
 [ApiController]
-[Route("api/sleep-logs")]
+[Route("api/v{version:apiVersion}/sleep-logs")]
 [Authorize]
+[ApiVersion("1.0")]
 public class SleepLogsController : ControllerBase
 {
     private readonly IMediator _mediator;

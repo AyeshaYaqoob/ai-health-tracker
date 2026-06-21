@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Asp.Versioning;
 using HealthTracker.Application.Features.SymptomLogs.Commands;
 using HealthTracker.Application.Features.SymptomLogs.Queries;
 using MediatR;
@@ -8,8 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace HealthTracker.API.Controllers;
 
 [ApiController]
-[Route("api/symptom-logs")]
-[Authorize]  // ← every endpoint requires a valid JWT token
+[Route("api/v{version:apiVersion}/symptom-logs")]
+[Authorize]
+[ApiVersion("1.0")]
 public class SymptomLogsController : ControllerBase
 {
     private readonly IMediator _mediator;

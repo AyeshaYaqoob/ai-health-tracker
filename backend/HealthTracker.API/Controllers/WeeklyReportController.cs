@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Asp.Versioning;
 using HealthTracker.Application.Features.WeeklyReports.Queries;
 using HealthTracker.Infrastructure.BackgroundJobs;
 using MediatR;
@@ -8,8 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace HealthTracker.API.Controllers;
 
 [ApiController]
-[Route("api/weekly-reports")]
+[Route("api/v{version:apiVersion}/weekly-reports")]
 [Authorize]
+[ApiVersion("1.0")]
 public class WeeklyReportsController : ControllerBase
 {
     private readonly IMediator _mediator;
