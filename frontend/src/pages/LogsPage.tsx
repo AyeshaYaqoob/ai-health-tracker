@@ -14,8 +14,8 @@ export default function LogsPage() {
   const [activeTab, setActiveTab] = useState<LogTab>('symptom')
   const [viewMode, setViewMode] = useState<ViewMode>('add')
   const queryClient = useQueryClient()
-  const today = new Date().toISOString().split('T')[0]
-  const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+  const [today] = useState(() => new Date().toISOString().split('T')[0])
+  const [sevenDaysAgo] = useState(() => new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0])
 
   // Forms
   const [symptomForm, setSymptomForm] = useState({ symptomName: '', severity: 5, notes: '', logDate: today })

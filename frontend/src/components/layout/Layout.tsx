@@ -44,7 +44,7 @@ export default function Layout() {
     { to: '/alerts', label: 'Health Alerts', icon: Bell, end: false, badge: alertCount },
   ]
 
-  const SidebarContent = () => (
+  const renderSidebarContent = () => (
     <>
       {/* Logo */}
       <div className="p-6 pb-5">
@@ -136,7 +136,7 @@ export default function Layout() {
     <div className="flex h-screen" style={{ background: '#f0f4ff' }}>
       {/* Desktop Sidebar */}
       <div className="hidden md:flex w-64 sidebar-gradient flex-col shadow-2xl flex-shrink-0">
-        <SidebarContent />
+        {renderSidebarContent()}
       </div>
 
       {/* Mobile sidebar overlay */}
@@ -157,7 +157,7 @@ export default function Layout() {
         >
           <X size={18} />
         </button>
-        <SidebarContent />
+        {renderSidebarContent()}
       </div>
 
       {/* Main content */}

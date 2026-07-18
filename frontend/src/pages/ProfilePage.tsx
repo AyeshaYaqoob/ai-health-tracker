@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { useQuery } from '@tanstack/react-query'
 import { getSymptomLogs, getMoodLogs, getSleepLogs, getMealLogs } from '../api/logs'
@@ -12,8 +13,8 @@ export default function ProfilePage() {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
 
-  const today = new Date().toISOString().split('T')[0]
-  const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+  const [today] = useState(() => new Date().toISOString().split('T')[0])
+  const [thirtyDaysAgo] = useState(() => new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0])
 
   const { data: symptoms } = useQuery({ queryKey: ['symptoms', thirtyDaysAgo, today], queryFn: () => getSymptomLogs(thirtyDaysAgo, today) })
   const { data: moods } = useQuery({ queryKey: ['moods', thirtyDaysAgo, today], queryFn: () => getMoodLogs(thirtyDaysAgo, today) })

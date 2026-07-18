@@ -8,15 +8,13 @@ services:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=YourStrong!Passw0rd
     ports:
-      - "1435:1433"
+      - "1433:1433"
     volumes:
       - sqlvolume:/var/opt/mssql
 
   # 2. .NET API
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: ayeshayaqoob/healthtracker-backend:latest
     ports:
       - "8080:8080"
     environment:
@@ -24,17 +22,14 @@ services:
       - ASPNETCORE_URLS=http://+:8080
       - ConnectionStrings__DefaultConnection=Server=db,1433;Database=HealthTrackerDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;
       - OpenAI__ApiKey=YOUR_GROQ_API_KEY_HERE
-      - CorsOrigins=http://localhost:3000
     depends_on:
       - db
 
   # 3. React Frontend
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: ayeshayaqoob/healthtracker-frontend:latest
     ports:
-      - "3000:80"
+      - "80:80"
     depends_on:
       - backend
 

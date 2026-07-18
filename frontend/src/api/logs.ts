@@ -83,7 +83,7 @@ export const getAlerts = async (): Promise<AlertsResponse> => {
 
 export const exportCsv = (from: string, to: string): void => {
   const token = localStorage.getItem('accessToken');
-  const baseUrl = client.defaults.baseURL ?? 'http://localhost:5180';
+  const baseUrl = client.defaults.baseURL ?? 'http://localhost:8080';
   const url = `${baseUrl}${API}/export/csv?from=${from}&to=${to}`;
   const link = document.createElement('a');
   link.href = url;
@@ -103,7 +103,7 @@ export const exportCsv = (from: string, to: string): void => {
 
 export const exportPdf = (from: string, to: string): void => {
   const token = localStorage.getItem('accessToken');
-  const baseUrl = client.defaults.baseURL ?? 'http://localhost:5180';
+  const baseUrl = client.defaults.baseURL ?? 'http://localhost:8080';
   const url = `${baseUrl}${API}/export/pdf?from=${from}&to=${to}`;
   fetch(url, { headers: { Authorization: `Bearer ${token}` } })
     .then(res => res.blob())
